@@ -61,6 +61,14 @@
     - consoles
     - console_libraries
 
+- name: Copy auth file
+  ansible.builtin.template:
+    src: templates/web.yml
+    dest: /etc/prometheus
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+  notify: Restart Prometheus
 
 - name: Copy systemd service unit file
   ansible.builtin.copy:

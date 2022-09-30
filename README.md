@@ -10,7 +10,7 @@ Open Telemetry role
 
 Role Variables
 --------------
-
+* `prometheus_admin_password` - Password for admin user of Prometheus
 
 Example Playbook
 ----------------
@@ -18,6 +18,7 @@ Example Playbook
 ```yaml
 - hosts: all
   vars:
+    prometheus_admin_password: password
   include_role:
     name: "ansible-otel"
 ```

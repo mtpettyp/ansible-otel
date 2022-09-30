@@ -12,8 +12,9 @@ receivers:
       processes:
 
 exporters:
-  file:
-    path: /tmp/metrics.json
+  prometheus:
+    endpoint: "localhost:9091"
+    namespace: "default"
 
 service:
   extensions: []
@@ -21,4 +22,4 @@ service:
     metrics:
       receivers: [hostmetrics]
       processors: []
-      exporters: [file]
+      exporters: [prometheus]

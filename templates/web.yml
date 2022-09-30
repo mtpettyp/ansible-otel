@@ -1,0 +1,2 @@
+basic_auth_users:
+       admin: {{ prometheus_admin_password | password_hash('blowfish', '5cc71b5b6be04134d5d2c6', ident='2b') }}
