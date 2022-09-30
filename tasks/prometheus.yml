@@ -10,6 +10,7 @@
     name: prometheus
     group: prometheus
     shell: /sbin/nologin
+    create_home: no
     system: true
 
 - name: Create data directory
@@ -48,6 +49,15 @@
     - prometheus
     - promtool
 
+- name: Copy config file
+  ansible.builtin.template:
+    src: templates/prometheus.yml
+    dest: /etc/prometheus
+    owner: prometheus
+    group: prometheus
+    mode: 0644
+  notify: Restart Prometheus
+
 - name: Copy config
   ansible.builtin.copy:
     src: '/tmp/{{ prometheus_directory }}/{{ item }}'
@@ -57,9 +67,9 @@
     group: prometheus
     mode: 0644
   with_items:
-    - prometheus.yml
     - consoles
     - console_libraries
+  notify: Restart Prometheus
 
 - name: Copy auth file
   ansible.builtin.template:
