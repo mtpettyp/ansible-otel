@@ -2,8 +2,8 @@
 
 
 
-OTel
-=========
+Open Telemetry
+==============
 
 Open Telemetry role
 

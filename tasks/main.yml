@@ -6,3 +6,6 @@
 
 - import_tasks: otel.yml
   tags: otel
+
+- import_tasks: prometheus.yml
+  tags: prometheus

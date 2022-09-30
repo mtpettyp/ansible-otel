@@ -4,12 +4,11 @@ import pytest
 
 
 @pytest.mark.parametrize("name", [
-    ("otelcol")
+    ("otelcol"),
+    ("prometheus")
 ])
 def test_services(host, name):
     """Validate that services are enabled and running """
     service = host.service(name)
     assert service.is_enabled
     assert service.is_running
-
-

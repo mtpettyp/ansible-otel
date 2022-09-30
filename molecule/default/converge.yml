@@ -10,9 +10,7 @@
     - name: Allow Prometheus UI in Molecule
       ansible.builtin.ufw:
         rule: allow
-        port: 5000
+        port: 9090
         proto: tcp
       tags:
         - always
-  vars:
-
