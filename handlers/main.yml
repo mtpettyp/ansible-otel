@@ -1,0 +1,6 @@
+---
+# handlers file for ansible-otel
+- name: Restart Open Telemetry Collector
+  ansible.builtin.service:
+    name: otelcol
+    state: restarted

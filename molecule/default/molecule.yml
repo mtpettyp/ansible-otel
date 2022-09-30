@@ -1,0 +1,46 @@
+---
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint --force-color
+  flake8
+platforms:
+  - name: ubuntu-jammy-otel
+    image: ubuntu:22.04
+    dockerfile: Dockerfile.j2
+    privileged: true
+    published_ports:
+      - 0.0.0.0:5000:5000/tcp
+    command: "/sbin/init"
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+scenario:
+  name: default
+  create_sequence:
+    - create
+  check_sequence:
+    - destroy
+    - create
+    - converge
+    - check
+    - destroy
+  converge_sequence:
+    - create
+    - converge
+  destroy_sequence:
+    - destroy
+  test_sequence:
+    - lint
+    - destroy
+    - syntax
+    - create
+    - converge
+    - idempotence
+    - verify
+    - destroy

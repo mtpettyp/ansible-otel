@@ -1,0 +1,25 @@
+receivers:
+  # Data sources: metrics
+  hostmetrics:
+    scrapers:
+      cpu:
+      disk:
+      filesystem:
+      load:
+      memory:
+      network:
+      process:
+      processes:
+
+exporters:
+  file:
+    path: /tmp/metrics.json
+
+service:
+  extensions: []
+  pipelines:
+    metrics:
+      receivers: [hostmetrics]
+      processors: []
+      exporters: [file]
+
