@@ -65,7 +65,7 @@
     remote_src: true
     owner: prometheus
     group: prometheus
-    mode: 0644
+    mode: 0744
   with_items:
     - consoles
     - console_libraries
