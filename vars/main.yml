@@ -1,4 +1,4 @@
 ---
 # vars file for ansible-otel
-prometheus_version: 2.37.1
+prometheus_version: 2.39.0
 prometheus_directory: "prometheus-{{ prometheus_version }}.linux-amd64"

@@ -58,18 +58,17 @@
     mode: 0644
   notify: Restart Prometheus
 
-- name: Copy config
+- name: Copy consoles and console libraries
   ansible.builtin.copy:
-    src: '/tmp/{{ prometheus_directory }}/{{ item }}'
+    src: 'files/{{ item }}'
     dest: /etc/prometheus
-    remote_src: true
     owner: prometheus
     group: prometheus
     mode: 0744
   with_items:
     - consoles
     - console_libraries
-  notify: Restart Prometheus
+  tags: console
 
 - name: Copy auth file
   ansible.builtin.template:
