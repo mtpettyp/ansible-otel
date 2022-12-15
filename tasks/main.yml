@@ -4,8 +4,10 @@
     cache_valid_time: 86400
     update_cache: yes
 
-- import_tasks: otel.yml
+- name: Install OTel tasks
+  ansible.builtin.import_tasks: otel.yml
   tags: otel
 
-- import_tasks: prometheus.yml
+- name: Install Prometheus tasks
+  ansible.builtin.import_tasks: prometheus.yml
   tags: prometheus
